@@ -11,18 +11,12 @@ function getHTML (options, callback) {
     host: options.host,
     path: options.path
   };
-
-//
-
   https.get(requestOptions,(getHTML) => {
     getHTML.setEncoding('utf8');
-
     let contentBody = '';
-
     getHTML.on('data', function(chunk) {
       contentBody += chunk;
     });
-
     getHTML.on('end', () => {
       callback(contentBody)
     });
